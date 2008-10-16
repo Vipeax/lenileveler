@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.views">
+      <category
+            id="Ppather_plugin"
+            name="Main">
+      </category>
+      <view
+            category="Ppather_plugin"
+            class="ppather_plugin.views.ExplorerView"
+            icon="icons/sample.gif"
+            id="ppather_plugin.views.ExplorerView"
+            name="Explorer">
+      </view>
+   </extension>
+
+   <extension
+         point="org.eclipse.ui.perspectives">
+      <perspective
+            class="ppather_plugin.perspectives.PerspectivePPather"
+            id="Ppather plugin.perspective"
+            name="PPather">
+      </perspective>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectiveExtensions">
+      <perspectiveExtension
+            targetID="Ppather plugin.perspectiveExtension">
+         <view
+               id="Ppather plugin.views.perspective"
+               relationship="stack"
+               relative="org.eclipse.ui.views.TaskList"
+               visible="true">
+         </view>
+      </perspectiveExtension>
+      <perspectiveExtension
+            targetID="org.eclipse.ui.resourcePerspective">
+         <view
+               id="ppather_plugin.views.ExplorerView"
+               ratio="0.5"
+               relationship="right"
+               relative="org.eclipse.ui.views.TaskList">
+         </view>
+      </perspectiveExtension>
+   </extension>
+   <extension
+         point="org.eclipse.ui.editors">
+      <editor
+            class="ppather_plugin.editors.PPatherEditor"
+            contributorClass="org.eclipse.ui.texteditor.BasicTextEditorActionContributor"
+            extensions="psc"
+            icon="icons/sample.gif"
+            id="ppather_plugin.editors.PPatherEditor"
+            name="Sample PPather Editor">
+      </editor>
+   </extension>
+
+</plugin>
