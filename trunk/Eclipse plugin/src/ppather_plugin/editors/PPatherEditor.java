@@ -9,8 +9,8 @@ public class PPatherEditor extends TextEditor {
 	public PPatherEditor() {
 		super();
 		colorManager = new ColorManager();
-		setSourceViewerConfiguration(new XMLConfiguration(colorManager));
-		setDocumentProvider(new XMLDocumentProvider());
+		setSourceViewerConfiguration(new PSCConfiguration(colorManager));
+		setDocumentProvider(new PSCDocumentProvider());
 	}
 	public void dispose() {
 		colorManager.dispose();

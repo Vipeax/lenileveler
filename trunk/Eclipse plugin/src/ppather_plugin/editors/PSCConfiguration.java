@@ -10,46 +10,46 @@ import org.eclipse.jface.text.rules.Token;
 import org.eclipse.jface.text.source.ISourceViewer;
 import org.eclipse.jface.text.source.SourceViewerConfiguration;
 
-public class XMLConfiguration extends SourceViewerConfiguration {
-	private XMLDoubleClickStrategy doubleClickStrategy;
-	private XMLTagScanner tagScanner;
-	private XMLScanner scanner;
+public class PSCConfiguration extends SourceViewerConfiguration {
+	private PSCDoubleClickStrategy doubleClickStrategy;
+	private PSCTagScanner tagScanner;
+	private PSCScanner scanner;
 	private ColorManager colorManager;
 
-	public XMLConfiguration(ColorManager colorManager) {
+	public PSCConfiguration(ColorManager colorManager) {
 		this.colorManager = colorManager;
 	}
 	public String[] getConfiguredContentTypes(ISourceViewer sourceViewer) {
 		return new String[] {
 			IDocument.DEFAULT_CONTENT_TYPE,
-			XMLPartitionScanner.XML_COMMENT,
-			XMLPartitionScanner.XML_TAG };
+			PSCPartitionScanner.PSC_COMMENT,
+			PSCPartitionScanner.PSC_TAG };
 	}
 	public ITextDoubleClickStrategy getDoubleClickStrategy(
 		ISourceViewer sourceViewer,
 		String contentType) {
 		if (doubleClickStrategy == null)
-			doubleClickStrategy = new XMLDoubleClickStrategy();
+			doubleClickStrategy = new PSCDoubleClickStrategy();
 		return doubleClickStrategy;
 	}
 
-	protected XMLScanner getXMLScanner() {
+	protected PSCScanner getPSCScanner() {
 		if (scanner == null) {
-			scanner = new XMLScanner(colorManager);
+			scanner = new PSCScanner(colorManager);
 			scanner.setDefaultReturnToken(
 				new Token(
 					new TextAttribute(
-						colorManager.getColor(IXMLColorConstants.DEFAULT))));
+						colorManager.getColor(IPSCColorConstants.DEFAULT))));
 		}
 		return scanner;
 	}
-	protected XMLTagScanner getXMLTagScanner() {
+	protected PSCTagScanner getPSCTagScanner() {
 		if (tagScanner == null) {
-			tagScanner = new XMLTagScanner(colorManager);
+			tagScanner = new PSCTagScanner(colorManager);
 			tagScanner.setDefaultReturnToken(
 				new Token(
 					new TextAttribute(
-						colorManager.getColor(IXMLColorConstants.TAG))));
+						colorManager.getColor(IPSCColorConstants.TAG))));
 		}
 		return tagScanner;
 	}
@@ -58,20 +58,20 @@ public class XMLConfiguration extends SourceViewerConfiguration {
 		PresentationReconciler reconciler = new PresentationReconciler();
 
 		DefaultDamagerRepairer dr =
-			new DefaultDamagerRepairer(getXMLTagScanner());
-		reconciler.setDamager(dr, XMLPartitionScanner.XML_TAG);
-		reconciler.setRepairer(dr, XMLPartitionScanner.XML_TAG);
+			new DefaultDamagerRepairer(getPSCTagScanner());
+		reconciler.setDamager(dr, PSCPartitionScanner.PSC_TAG);
+		reconciler.setRepairer(dr, PSCPartitionScanner.PSC_TAG);
 
-		dr = new DefaultDamagerRepairer(getXMLScanner());
+		dr = new DefaultDamagerRepairer(getPSCScanner());
 		reconciler.setDamager(dr, IDocument.DEFAULT_CONTENT_TYPE);
 		reconciler.setRepairer(dr, IDocument.DEFAULT_CONTENT_TYPE);
 
 		NonRuleBasedDamagerRepairer ndr =
 			new NonRuleBasedDamagerRepairer(
 				new TextAttribute(
-					colorManager.getColor(IXMLColorConstants.XML_COMMENT)));
-		reconciler.setDamager(ndr, XMLPartitionScanner.XML_COMMENT);
-		reconciler.setRepairer(ndr, XMLPartitionScanner.XML_COMMENT);
+					colorManager.getColor(IPSCColorConstants.PSC_COMMENT)));
+		reconciler.setDamager(ndr, PSCPartitionScanner.PSC_COMMENT);
+		reconciler.setRepairer(ndr, PSCPartitionScanner.PSC_COMMENT);
 
 		return reconciler;
 	}
