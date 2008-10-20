@@ -1,60 +1,78 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?PSC version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.2"?>
 <plugin>
-   <extension
-         point="org.eclipse.ui.views">
-      <category
-            id="Ppather_plugin"
-            name="Main">
-      </category>
-      <view
-            category="Ppather_plugin"
-            class="ppather_plugin.views.ExplorerView"
-            icon="icons/sample.gif"
-            id="ppather_plugin.views.ExplorerView"
-            name="Explorer">
-      </view>
-   </extension>
 
    <extension
          point="org.eclipse.ui.perspectives">
       <perspective
             class="ppather_plugin.perspectives.PerspectivePPather"
-            id="Ppather plugin.perspective"
+            icon="icons/ppather.gif"
+            id="ppather_plugin.perspective"
             name="PPather">
       </perspective>
    </extension>
    <extension
-         point="org.eclipse.ui.perspectiveExtensions">
-      <perspectiveExtension
-            targetID="Ppather plugin.perspectiveExtension">
-         <view
-               id="Ppather plugin.views.perspective"
-               relationship="stack"
-               relative="org.eclipse.ui.views.TaskList"
-               visible="true">
-         </view>
-      </perspectiveExtension>
-      <perspectiveExtension
-            targetID="org.eclipse.ui.resourcePerspective">
-         <view
-               id="ppather_plugin.views.ExplorerView"
-               ratio="0.5"
-               relationship="right"
-               relative="org.eclipse.ui.views.TaskList">
-         </view>
-      </perspectiveExtension>
-   </extension>
-   <extension
          point="org.eclipse.ui.editors">
       <editor
-            class="ppather_plugin.editors.PPatherEditor"
+            class="ppather_plugin.editors.PSCEditor"
             contributorClass="org.eclipse.ui.texteditor.BasicTextEditorActionContributor"
             extensions="psc"
-            icon="icons/sample.gif"
-            id="ppather_plugin.editors.PPatherEditor"
-            name="Sample PPather Editor">
+            icon="icons/ppather.gif"
+            id="ppather_plugin.editors.PSCEditor"
+            name="Sample PSC Editor">
       </editor>
+   </extension>
+   <extension
+         point="org.eclipse.ui.newWizards">
+      <category
+            id="ppather_plugin"
+            name="PPather">
+      </category>
+      <wizard
+            id="ppather_plugin.wizards.PSCNewPageWizard"
+            name="PPather task file"
+            icon="icons/ppather.gif"     
+            category="Ppather_plugin" 
+            class="ppather_plugin.wizards.PSCNewWizard" 
+            project="false"
+      		finalPerspective="ppather_plugin.perspective" 
+      		preferredPerspectives="ppather_plugin.perspective">      
+            <description>
+          		%description
+        	</description>       
+      </wizard>
+      <wizard
+            id="ppather_plugin.wizards.PSCNewProject"
+            name="PPather project"
+            icon="icons/ppather.gif"     
+            category="Ppather_plugin" 
+            class="ppather_plugin.wizards.PSCNewProject" 
+            project="true"
+      		finalPerspective="ppather_plugin.perspective" 
+      		preferredPerspectives="ppather_plugin.perspective">      
+            <description>
+          		%description
+        	</description>   
+         	<selection
+               class="org.eclipse.core.resources.IProject">
+         	</selection>    
+      </wizard>
+   </extension>
+   <extension
+         point="org.eclipse.ui.actionSets">
+      <actionSet
+            id="ppather_plugin.actionSet"
+            label="PPather Action set"
+            visible="true">
+         <action
+               class="ppater_plugin.editors.actions.AddWordAction.java"
+               icon="icons/ppather.gif"
+               id="ppather_plugin.editors.actions.AddWordAction"
+               label="Add Word"
+               retarget="true"
+               style="push">
+         </action>
+      </actionSet>
    </extension>
 
 </plugin>
