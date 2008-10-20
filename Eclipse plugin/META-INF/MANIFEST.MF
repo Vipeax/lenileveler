@@ -1,13 +1,15 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: Ppather_plugin Plug-in
-Bundle-SymbolicName: Ppather_plugin; singleton:=true
-Bundle-Version: 1.0.0
-Bundle-Activator: ppather_plugin.Activator
+Bundle-Name: PPather Plug-in
+Bundle-SymbolicName: ppather_plugin;singleton:=true
+Bundle-Version: 0.1.0
+Bundle-Activator: ppather_plugin.PPatherPlugin
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
- org.eclipse.jface.text,
  org.eclipse.ui.editors,
+ org.eclipse.jface.text,
+ org.eclipse.ui.views,
  org.eclipse.core.resources,
  org.eclipse.ui.ide
 Eclipse-LazyStart: true
+Bundle-Vendor: Leniver

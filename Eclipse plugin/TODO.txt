@@ -1,0 +1,3 @@
+* Correct the bug on "PPather project" creation
+* Affect "PPather project" to perspective
+* Improve Language constants management to load them from a XML file.
