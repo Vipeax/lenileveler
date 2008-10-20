@@ -34,7 +34,7 @@ public class PSCEditor extends TextEditor  {
 		super.dispose();
 	}
 
-	private static final String CONTENTASSIST_PROPOSAL_ID = "net.ppather.editor.PSCEditor.ContentAssistProposal"; 
+	private static final String CONTENTASSIST_PROPOSAL_ID = "net.ppather.editor.editors.PSCEditor.ContentAssistProposal"; 
 
 	@Override
 	protected void createActions() {
