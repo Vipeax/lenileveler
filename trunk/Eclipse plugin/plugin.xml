@@ -5,51 +5,51 @@
    <extension
          point="org.eclipse.ui.perspectives">
       <perspective
-            class="ppather_plugin.perspectives.PerspectivePPather"
+            class="net.ppather.editor.perspectives.PerspectivePPather"
             icon="icons/ppather.gif"
-            id="ppather_plugin.perspective"
-            name="PPather">
+            id="net.ppather.editor.perspective"
+            name="%perspective.name.0">
       </perspective>
    </extension>
    <extension
          point="org.eclipse.ui.editors">
       <editor
-            class="ppather_plugin.editors.PSCEditor"
+            class="net.ppather.editor.editors.PSCEditor"
             contributorClass="org.eclipse.ui.texteditor.BasicTextEditorActionContributor"
             extensions="psc"
             icon="icons/ppather.gif"
-            id="ppather_plugin.editors.PSCEditor"
-            name="Sample PSC Editor">
+            id="net.ppather.editor.editors.PSCEditor"
+            name="%editor.name.0">
       </editor>
    </extension>
    <extension
          point="org.eclipse.ui.newWizards">
       <category
-            id="ppather_plugin.wizards.category"
-            name="PPather">
+            id="net.ppather.editor.wizards.category"
+            name="%category.name.0">
       </category>
       <wizard
-            id="ppather_plugin.wizards.PSCNewPageWizard"
-            name="PPather task file"
+            id="net.ppather.editor.wizards.PSCNewPageWizard"
+            name="%wizard.name.0"
             icon="icons/ppather.gif"     
-            category="ppather_plugin.wizards.category" 
-            class="ppather_plugin.wizards.PSCNewWizard" 
+            category="net.ppather.editor.wizards.category" 
+            class="net.ppather.editor.wizards.PSCNewWizard" 
             project="false"
-      		finalPerspective="ppather_plugin.perspective" 
-      		preferredPerspectives="ppather_plugin.perspective">      
+      		finalPerspective="net.ppather.editor.perspective" 
+      		preferredPerspectives="net.ppather.editor.perspective">      
             <description>
           		%description
         	</description>       
       </wizard>
       <wizard
-            id="ppather_plugin.wizards.PSCNewProject"
-            name="PPather project"
+            id="net.ppather.editor.wizards.PSCNewProject"
+            name="%wizard.name.1"
             icon="icons/ppather.gif"     
-            category="ppather_plugin.wizards.category" 
-            class="ppather_plugin.wizards.PSCNewProject" 
+            category="net.ppather.editor.wizards.category" 
+            class="net.ppather.editor.wizards.PSCNewProject" 
             project="true"
-      		finalPerspective="ppather_plugin.perspective" 
-      		preferredPerspectives="ppather_plugin.perspective">      
+      		finalPerspective="net.ppather.editor.perspective" 
+      		preferredPerspectives="net.ppather.editor.perspective">      
             <description>
           		%description
         	</description>   
@@ -61,14 +61,14 @@
    <extension
          point="org.eclipse.ui.actionSets">
       <actionSet
-            id="ppather_plugin.actionSet"
-            label="PPather Action set"
+            id="net.ppather.editor.actionSet"
+            label="%actionSet.label.0"
             visible="true">
          <action
                class="ppater_plugin.editors.actions.AddWordAction.java"
                icon="icons/ppather.gif"
-               id="ppather_plugin.editors.actions.AddWordAction"
-               label="Add Word"
+               id="net.ppather.editor.editors.actions.AddWordAction"
+               label="%action.label.0"
                retarget="true"
                style="push">
          </action>
