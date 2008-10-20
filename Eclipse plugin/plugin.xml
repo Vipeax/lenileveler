@@ -25,14 +25,14 @@
    <extension
          point="org.eclipse.ui.newWizards">
       <category
-            id="ppather_plugin"
+            id="ppather_plugin.wizards.category"
             name="PPather">
       </category>
       <wizard
             id="ppather_plugin.wizards.PSCNewPageWizard"
             name="PPather task file"
             icon="icons/ppather.gif"     
-            category="Ppather_plugin" 
+            category="ppather_plugin.wizards.category" 
             class="ppather_plugin.wizards.PSCNewWizard" 
             project="false"
       		finalPerspective="ppather_plugin.perspective" 
@@ -45,7 +45,7 @@
             id="ppather_plugin.wizards.PSCNewProject"
             name="PPather project"
             icon="icons/ppather.gif"     
-            category="Ppather_plugin" 
+            category="ppather_plugin.wizards.category" 
             class="ppather_plugin.wizards.PSCNewProject" 
             project="true"
       		finalPerspective="ppather_plugin.perspective" 
