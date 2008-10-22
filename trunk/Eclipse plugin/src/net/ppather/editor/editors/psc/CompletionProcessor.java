@@ -12,8 +12,8 @@ import org.eclipse.jface.text.contentassist.IContentAssistProcessor;
 import org.eclipse.jface.text.contentassist.IContextInformation;
 import org.eclipse.jface.text.contentassist.IContextInformationValidator;
 
+import net.ppather.editor.editors.psc.language.LanguageHandler;
 import net.ppather.editor.editors.utils.EditorUtils;
-import net.ppather.editor.editors.utils.LanguageHandler;
 
 public class CompletionProcessor implements IContentAssistProcessor {
 	// Proposal part before cursor

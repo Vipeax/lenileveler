@@ -38,10 +38,10 @@ import org.eclipse.ui.texteditor.ITextEditor;
 import org.eclipse.ui.views.contentoutline.ContentOutlinePage;
 import org.osgi.framework.Bundle;
 
+import net.ppather.editor.editors.psc.language.LanguageHandler;
 import net.ppather.editor.editors.psc.sections.ISection;
 import net.ppather.editor.editors.psc.sections.Task;
 import net.ppather.editor.editors.psc.sections.Variable;
-import net.ppather.editor.editors.utils.LanguageHandler;
 
 
 public class OutlineView extends ContentOutlinePage {
