@@ -5,8 +5,8 @@ import org.eclipse.jface.text.rules.RuleBasedScanner;
 import org.eclipse.jface.text.rules.SingleLineRule;
 import org.eclipse.jface.text.rules.WordRule;
 
+import net.ppather.editor.editors.psc.language.LanguageHandler;
 import net.ppather.editor.editors.utils.ColorHandler;
-import net.ppather.editor.editors.utils.LanguageHandler;
 import net.ppather.editor.editors.utils.TokenHandler;
 
 

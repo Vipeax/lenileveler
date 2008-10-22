@@ -1,4 +1,4 @@
-package net.ppather.editor.editors.utils;
+package net.ppather.editor.editors.psc.language;
 
 public class LanguageHandler {
 	public static final int TASK = 0;
