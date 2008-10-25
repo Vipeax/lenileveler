@@ -12,12 +12,17 @@ import net.ppather.editor.editors.psc.PartitionScanner;
 /**
  * The activator class controls the plug-in life cycle
  */
-public class Plugin extends AbstractUIPlugin {
+public class PPatherPlugin extends AbstractUIPlugin {
 
 	// The plug-in ID
-	public static final String PLUGIN_ID = "Ppather_plugin";
+	public static final String PLUGIN_ID = "net.ppather.plugin";
+
+	public static final String NATURE_ID = "net.ppather.editor.natures.PSCNature";
+
+	public static final String PERSPECTIVE_ID = "net.ppather.editor.perspectives.PerspectivePPather";
+	
 	// The shared instance
-	private static Plugin plugin;
+	private static PPatherPlugin plugin;
 	//Resource bundle.
 	private ResourceBundle resourceBundle;
 	
@@ -31,7 +36,7 @@ public class Plugin extends AbstractUIPlugin {
 	}
 
 
-	public Plugin() {
+	public PPatherPlugin() {
 	}
 
 
@@ -40,7 +45,7 @@ public class Plugin extends AbstractUIPlugin {
 		super.start(context);
 		plugin = this;
 		try {
-			resourceBundle=ResourceBundle.getBundle("net.ppather.editor.PluginResources");
+			resourceBundle=ResourceBundle.getBundle("net.ppather.editor.PPatherPluginResources");
 		} catch (MissingResourceException x) {
 			resourceBundle = null;
 		}
@@ -58,7 +63,7 @@ public class Plugin extends AbstractUIPlugin {
 	 *
 	 * @return the shared instance
 	 */
-	public static Plugin getDefault() {
+	public static PPatherPlugin getDefault() {
 		return plugin;
 	}
 

@@ -21,14 +21,14 @@ import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.dialogs.ContainerSelectionDialog;
 
 
-public class PSCNewWizardPage extends WizardPage {
+public class PSCFileWizardPage extends WizardPage {
 	private Text containerText;
 
 	private Text fileText;
 
 	private ISelection selection;
 
-	public PSCNewWizardPage(ISelection selection) {
+	public PSCFileWizardPage(ISelection selection) {
 		super("wizardPage");
 		setTitle("PPather task file");
 		setDescription("PPather task file");

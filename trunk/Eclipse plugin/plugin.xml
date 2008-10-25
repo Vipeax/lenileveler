@@ -7,9 +7,18 @@
       <perspective
             class="net.ppather.editor.perspectives.PerspectivePPather"
             icon="icons/ppather.gif"
-            id="net.ppather.editor.perspective"
+            id="net.ppather.editor.perspectives.PerspectivePPather"
             name="%perspective.name.0">
       </perspective>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectiveExtensions">
+      <perspectiveExtension
+            targetID="net.ppather.editor.perspectives.PerspectivePPather">
+         <showInPart
+               id="org.eclipse.ui.views.ResourceNavigator">
+         </showInPart>
+      </perspectiveExtension>
    </extension>
    <extension
          point="org.eclipse.ui.editors">
@@ -23,33 +32,29 @@
       </editor>
    </extension>
    <extension
-         point="org.eclipse.ui.newWizards">
+		 point="org.eclipse.ui.newWizards">
       <category
             id="net.ppather.editor.wizards.category"
             name="%category.name.0">
       </category>
       <wizard
-            id="net.ppather.editor.wizards.PSCNewPageWizard"
-            name="%wizard.name.0"
+            id="net.ppather.editor.wizards.PSCPageWizard"
+            name="PPather file"
             icon="icons/ppather.gif"     
             category="net.ppather.editor.wizards.category" 
-            class="net.ppather.editor.wizards.PSCNewWizard" 
-            project="false"
-      		finalPerspective="net.ppather.editor.perspective" 
-      		preferredPerspectives="net.ppather.editor.perspective">      
+            class="net.ppather.editor.wizards.PSCFileWizard" 
+            project="false">      
             <description>
           		%description
         	</description>       
       </wizard>
       <wizard
-            id="net.ppather.editor.wizards.PSCNewProject"
-            name="%wizard.name.1"
+            id="net.ppather.editor.wizards.PSCProjectWizard"
+            name="PPather project"
             icon="icons/ppather.gif"     
             category="net.ppather.editor.wizards.category" 
-            class="net.ppather.editor.wizards.PSCNewProject" 
-            project="true"
-      		finalPerspective="net.ppather.editor.perspective" 
-      		preferredPerspectives="net.ppather.editor.perspective">      
+            class="net.ppather.editor.wizards.PSCProjectWizard" 
+            project="true">      
             <description>
           		%description
         	</description>   
@@ -59,20 +64,21 @@
       </wizard>
    </extension>
    <extension
-         point="org.eclipse.ui.actionSets">
-      <actionSet
-            id="net.ppather.editor.actionSet"
-            label="%actionSet.label.0"
-            visible="true">
-         <action
-               class="ppater_plugin.editors.actions.AddWordAction.java"
-               icon="icons/ppather.gif"
-               id="net.ppather.editor.editors.actions.AddWordAction"
-               label="%action.label.0"
-               retarget="true"
-               style="push">
-         </action>
-      </actionSet>
+         id="net.ppather.editor.natures.PSCNature"
+         point="org.eclipse.core.resources.natures">
+      <runtime>
+         <run
+               class="net.ppather.editor.natures.PSCNature">
+         </run>
+      </runtime>
+   </extension>
+   <extension
+		 point="org.eclipse.ui.ide.projectNatureImages">
+	  <image
+			icon="icons/psc_ovr.gif"
+			natureId="net.ppather.editor.natures.PSCNature"
+			id="net.ppather.editor.natures.PSCNature.Image">
+	  </image>
    </extension>
 
 </plugin>
