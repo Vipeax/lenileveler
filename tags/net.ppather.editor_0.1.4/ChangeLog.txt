@@ -1,0 +1,44 @@
+2008-10-21	Leniver	<leniver@gmail.com>
+	
+	* Beta 0.1.4
+	* Adding Project wizard to navigator view on PPather perspective
+	* Adding File wizard to navigator view on PPather perspective
+	* Adding auto loading PPather perspective on PPather project creation
+	* Bug correction: Project creation work fine now.
+	* Adding icon for PPather project
+	* Updating TODO.txt
+
+2008-10-21	Leniver	<leniver@gmail.com>
+
+	* Beta 0.1.3
+	* Minor correction on Editor action handler
+	
+2008-10-20	Leniver	<leniver@gmail.com>
+
+	* Beta 0.1.1
+	* Minor correction on PPather project wizard
+
+2008-10-20	Leniver	<leniver@gmail.com>
+
+	* Beta 0.1.0
+	* Added Syntax highlighting
+	* Added Auto-completion
+	* Added Outline view
+	* Added PPather project wizard
+	* Added PPather task file wizard
+	* Added Language Tasks (auto-completion, help, wiki-link)
+	* Added Language Functions (auto-completion, help, wiki-link)
+	* Added Language Predefine Variables (auto-completion, help, wiki-link)
+
+
+2008-10-19	Leniver	<leniver@gmail.com>
+
+	* Alpha 0.0.2
+	* Added Text editor view
+	* Added PPather Perspective 
+
+
+2008-10-18	Leniver	<leniver@gmail.com>
+
+	* Alpha 0.0.1
+	* Project creation

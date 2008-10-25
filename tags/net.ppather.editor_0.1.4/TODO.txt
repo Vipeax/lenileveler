@@ -1,0 +1,1 @@
+* Improve Language constants management to load them from a XML file.
