@@ -1,6 +1,6 @@
 package net.ppather.editor.editors.psc;
 
-import net.ppather.editor.Plugin;
+import net.ppather.editor.PPatherPlugin;
 
 import org.eclipse.jface.text.DefaultIndentLineAutoEditStrategy;
 import org.eclipse.jface.text.IAutoEditStrategy;
@@ -36,7 +36,7 @@ public class Configuration extends TextSourceViewerConfiguration {
 
 	@Override
 	public String getConfiguredDocumentPartitioning(ISourceViewer sourceViewer) {
-		return Plugin.PSC_PARTITIONING;
+		return PPatherPlugin.PSC_PARTITIONING;
 	}
 	
 	@Override

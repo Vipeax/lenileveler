@@ -10,13 +10,13 @@ import org.eclipse.core.runtime.IPath;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.ui.dialogs.WizardNewProjectCreationPage;
 
-public class PSCNewProjectPage extends WizardNewProjectCreationPage
+public class PSCProjectWizardPage extends WizardNewProjectCreationPage
 {
 	private String nomProjet;
 	private IPath nomRep;
 	private ISelection selection;
 	
-	public PSCNewProjectPage(ISelection sel)
+	public PSCProjectWizardPage(ISelection sel)
 	{
 		super("WizardNewProjectCreationPage");
 		setTitle("Editeur PSC");

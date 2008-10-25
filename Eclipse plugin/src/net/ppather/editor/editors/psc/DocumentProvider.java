@@ -1,6 +1,6 @@
 package net.ppather.editor.editors.psc;
 
-import net.ppather.editor.Plugin;
+import net.ppather.editor.PPatherPlugin;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.jface.text.IDocument;
@@ -17,8 +17,8 @@ public class DocumentProvider extends FileDocumentProvider {
 		
 		if (document instanceof IDocumentExtension3){
 			IDocumentExtension3 extension3= (IDocumentExtension3) document;
-			IDocumentPartitioner partitioner= new FastPartitioner(Plugin.getDefault().getPartitionScanner(),PartitionScanner.PARTITION_TYPES);
-			extension3.setDocumentPartitioner(Plugin.PSC_PARTITIONING, partitioner);
+			IDocumentPartitioner partitioner= new FastPartitioner(PPatherPlugin.getDefault().getPartitionScanner(),PartitionScanner.PARTITION_TYPES);
+			extension3.setDocumentPartitioner(PPatherPlugin.PSC_PARTITIONING, partitioner);
 			partitioner.connect(document);
 		}
 		return document;

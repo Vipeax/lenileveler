@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-import net.ppather.editor.Plugin;
+import net.ppather.editor.PPatherPlugin;
 
 import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.core.runtime.Path;
@@ -55,7 +55,7 @@ public class OutlineView extends ContentOutlinePage {
 		public OutlineLabelProvider() {
 			super(); 
 			try {
-				Bundle bundle = Plugin.getDefault().getBundle();
+				Bundle bundle = PPatherPlugin.getDefault().getBundle();
 				this.taskImage =
 					new Image(
 						Display.getCurrent(),

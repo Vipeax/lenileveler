@@ -15,30 +15,19 @@ import java.io.*;
 import org.eclipse.ui.*;
 import org.eclipse.ui.ide.IDE;
 
-/**
- * This is a sample new wizard. Its role is to create a new file 
- * resource in the provided container. If the container resource
- * (a folder or a project) is selected in the workspace 
- * when the wizard is opened, it will accept it as the target
- * container. The wizard creates one file with the extension
- * "psc". If a sample multi-page editor (also available
- * as a template) is registered for the same extension, it will
- * be able to open it.
- */
-
-public class PSCNewWizard extends Wizard implements INewWizard {
-	private PSCNewWizardPage page;
+public class PSCFileWizard extends Wizard implements INewWizard {
+	private PSCFileWizardPage page;
 	private ISelection selection;
 
 
-	public PSCNewWizard() {
+	public PSCFileWizard() {
 		super();
 		setNeedsProgressMonitor(true);
 	}
 	
 	@Override
 	public void addPages() {
-		page = new PSCNewWizardPage(selection);
+		page = new PSCFileWizardPage(selection);
 		addPage(page);
 	}
 
@@ -85,7 +74,7 @@ public class PSCNewWizard extends Wizard implements INewWizard {
 		IContainer container = (IContainer) resource;
 		final IFile file = container.getFile(new Path(fileName));
 		try {
-			InputStream stream = openContentStream();
+			InputStream stream = openContentStream("");
 			if (file.exists()) {
 				file.setContents(stream, true, true, monitor);
 			} else {
@@ -109,9 +98,8 @@ public class PSCNewWizard extends Wizard implements INewWizard {
 		monitor.worked(1);
 	}
 
-	private InputStream openContentStream() {
-		String contents = "";
-		return new ByteArrayInputStream(contents.getBytes());
+	public static InputStream openContentStream(String content) {
+		return new ByteArrayInputStream(content.getBytes());
 	}
 
 	private void throwCoreException(String message) throws CoreException {
