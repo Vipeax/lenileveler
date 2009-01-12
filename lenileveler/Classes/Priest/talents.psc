@@ -1,15 +1,16 @@
 // ******************************************************************************************** //
-//	LeniPather:	 priest talents handler															//
+//	LeniPather:	 priest talentss handler															//
 //																								//
 // 	Version: 	0.1																				//
 // 	Authors: 	Leniver																			//
 // ******************************************************************************************** //
-// http://www.wow-europe.com/fr/info/basics/talents/priest/talents.html?tal=050320303020000000000000000000000000000000000000000000325023051023012325152001050
+// http://www.wow-europe.com/fr/info/basics/talentss/priest/talentss.html?tal=050320303020000000000000000000000000000000000000000000325023051023012325152001050
 If
 {
 	$cond = $MyClass == "Priest";
 	Talent
 	{
+		$Prio = 3;
 		$Talents =
 			[
             //  "/000000000000000000000000000/0000000000000000000000000/00000000000000000000000000",

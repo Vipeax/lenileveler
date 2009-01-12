@@ -1,15 +1,16 @@
 // ******************************************************************************************** //
-//	LeniPather:	 Shaman talents handler															//
+//	LeniPather:	 Shaman talentss handler															//
 //																								//
 // 	Version: 	0.1																				//
 // 	Authors: 	Leniver																			//
 // ******************************************************************************************** //
-// http://www.wow-europe.com/fr/info/basics/talents/shaman/talents.html?tal=540000000000000000000000005050331355013033103003005050005000000000000000000000
+// http://www.wow-europe.com/fr/info/basics/talentss/shaman/talentss.html?tal=540000000000000000000000005050331355013033103003005050005000000000000000000000
 If
 {
 	$cond = $MyClass == "Shaman";
 	Talent
 	{
+		$Prio = 3;
 		$Talents =
 			[
             //  "/00000000000000000000000/000000000000000000000000000/0000000000000000000000000",

@@ -32,21 +32,21 @@ Par
 	// Load harving handler
 	#include </base/harving.psc>
 
-	// Load talent handler
-	#include </base/talent.psc>
+	// Load class handler
+	#include </classes/base.psc>
 
 
 	// Alliance loading
 	If
 	{
-		$cond = ($MyRace == "Human" || $MyRace == "Dwarf" || $MyRace == "Gnome" || $MyRace == "NightElf" || $MyRace == "Dranei");
+		$cond = $MyFaction == "Alliance";
 		#include </base/alliance.psc>
 	}
 
 	// Horde loading
 	If
 	{
-		$cond = ($MyRace == "Undead" || $MyRace == "Tauren" || $MyRace == "Orc" || $MyRace == "Troll" || $MyRace == "BloodElf");
+		$cond = $MyFaction == "Horde";
 		#include </base/horde.psc>
 	}
 }
