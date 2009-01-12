@@ -1,15 +1,16 @@
 // ******************************************************************************************** //
-//	LeniPather:	 Warlock talents handler														//
+//	LeniPather:	 Warlock talentss handler														//
 //																								//
 // 	Version: 	0.1																				//
 // 	Authors: 	Leniver																			//
 // ******************************************************************************************** //
-// http://www.wow-europe.com/fr/info/basics/talents/warrior/talents.html?tal=052203212300000000000000000000005050105525012253100011340000000000000000000000000000
+// http://www.wow-europe.com/fr/info/basics/talentss/warrior/talentss.html?tal=052203212300000000000000000000005050105525012253100011340000000000000000000000000000
 If
 {
 	$cond = $MyClass == "Warrior";
 	Talent
 	{
+		$Prio = 3;
 		$Talents =
 			[
             //  "/00000000000000000000000000000/00000000000000000000000000/00000000000000000000000000",

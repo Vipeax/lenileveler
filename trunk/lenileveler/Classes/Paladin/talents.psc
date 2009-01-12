@@ -1,15 +1,16 @@
 // ******************************************************************************************** //
-//	LeniPather:	 paladin talents handler														//
+//	LeniPather:	 paladin talentss handler														//
 //																								//
 // 	Version: 	0.1																				//
 // 	Authors: 	Leniver																			//
 // ******************************************************************************************** //
-// http://www.wow-europe.com/fr/info/basics/talents/paladin/talents.html?tal=050000000000000000000000001050050500000000000000000552000500233300322105001350
+// http://www.wow-europe.com/fr/info/basics/talentss/paladin/talentss.html?tal=050000000000000000000000001050050500000000000000000552000500233300322105001350
 If
 {
 	$cond = $MyClass == "Paladin";
 	Talent
 	{
+		$Prio = 3;
 		$Talents =
 			[
             //  "/0000000000000000000000000/000000000000000000000000/00000000000000000000000000",

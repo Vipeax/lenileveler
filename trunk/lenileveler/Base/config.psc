@@ -7,7 +7,7 @@
 
 
 	// ******************************************************************************************** //
-	// 		Misc Configuration   																	//
+	// 		Leveling Configuration   																//
 	// ******************************************************************************************** //
 		$VarLevelingFromRace = True;			// Use default template race leveling? True/False.
 		$VarLevelingForcedRace = "";			// Use this forced template leveling:
@@ -17,47 +17,52 @@
 
 
 	// ******************************************************************************************** //
-	// 		Ranged Configuration   																	//
+	// 		Buy Configuration   																	//
 	// ******************************************************************************************** //
-		$VarRanged = "Rough Arrow";  			// The name of the Ammo you wish to be purchased.
-		$VarMinRanged = 0; 						// Minimum quantities of arrows before repurchasing.
-		$VarBuyRanged = 10; 					// How many Ranged ammo to purchase?
+		$VarBuyFood = False;					// Does Toon have to buy food? True/False
+		$VarBuyWater = False;					// Does Toon have to buy water? True/False
+		$VarBuyAmmo = False;					// Does Toon have to buy arrows/bullets? True/False	
 
+		$VarBuyMinFood = 0; 					// Minimum quantities of food before purchasing new one.
+		$VarBuyMinWater = 0; 					// Minimum quantities of mana regenerating food before purchasing new one.
+		$VarBuyMinAmmo = 50; 					// Minimum quantities of arrows/bullets before repurchasing.
 
+		$VarBuyQtyFood = 100; 					// Quantities of food to purchase.
+		$VarBuyQtyWater = 100; 					// Quantities of water to purchase.
+		$VarBuyQtyAmmo = 400; 					// Quantities of arrows/bullets to purchase.
 
-	// ******************************************************************************************** //
-	// 		Food/Drink Configuration   																//
-	// ******************************************************************************************** //
-		$VarMinFood = 0; 						// Minimum quantities of food before purchasing new one.
-		$VarMinWater = 0; 						// Minimum quantities of mana regenerating food before purchasing new one.
-		$VarBuyFood = 10; 						// Quantities of food to purchase.
-		$VarBuyWater = 10; 						// Quantities of water to purchase.
-		$VarFood = "tough Hunk of Bread"; 		// The name of the food to purchase.s
-		$VarWater = "Moonberry Juice"; 			// The name of the water to purchase.
+		$VarBuyUseMount = True;					// Use mount to go buying? True/False
 
 
 
 	// ******************************************************************************************** //
 	// 		Repair and Vendoring Configuration   													//
 	// ******************************************************************************************** //
-		$VarVendProtected = [];					// These items will NOT be sold. Seperated by a comma.
-		$VarVendForced = []; 					// These items will force to be sold. Seperated by a comma.
-		$VarMinDurability = 0.2; 				// How many percent of durability left before repairing. 0.2 means 20%
-		$VarMinFreeBagSlots = 1; 				// Minimum free bag slots left before selling.
-		$VarSellGray  = True; 					// Sell items with a Grey name? True/False
-		$VarSellWhite = True; 					// Sell items of Common quality? True/False
-		$VarSellGreen = False; 					// Sell items of Uncommon quality? True/False
+		$VarVendorProtected = [];				// These items will NOT be sold. Seperated by a comma.
+		$VarVendorForceSell = []; 				// These items will force to be sold. Seperated by a comma.
+		$VarVendorMinDurability = 0.2; 			// How many percent of durability left before repairing. 0.2 means 20%
+		$VarVendorMinFreeBagSlots = 1; 			// Minimum free bag slots left before selling.
+		$VarVendorSellGray  = True; 			// Sell items with a Grey name? True/False
+		$VarVendorSellWhite = True; 			// Sell items of Common quality? True/False
+		$VarVendorSellGreen = False; 			// Sell items of Uncommon quality? True/False
+		$VarVendorBlacklistTime	= 15 * 60;		// Blacklist vendor for 15 minutes.
+		$VarVendorProximity = 60;				// When Toon is this near in yards, it will sell/repair.
+		$VarVendorUseMount = True;				// Use mount to go selling/repairing? True/False
 
 
 	// ******************************************************************************************** //
 	// 		Mailing Configuration   																//
 	// ******************************************************************************************** //
-		$VarTo = "Test"; 						// Replace 'Test' with the name of the character which will receive the items.
-		$VarItems = []; 						// Items to be mailed to the character above.
-		$VarMailProtected = []; 				// Items that will not be mailed
+		$VarMail = False;						// Enable mail sending.
+		$VarMailTo = "Test"; 					// Replace 'Test' with the name of the character which will receive the items.
+		$VarMailItems = []; 					// Items to be mailed to the character above. Seperated by a comma.
+		$VarMailProtected = []; 				// Items that will not be mailed. Seperated by a comma.
 		$VarMailGreens = True; 					// Mail items of Uncommon quality (Green name) True/False
 		$VarMailBlues = True; 					// Mail items of Rare quality (Blue name) True/False
 		$VarMailEpic = True; 					// Mail items of Epic quality (Purple name) True/False
+		$VarMailMinFreeBagSlots = 5; 			// Minimum free bag slots left before mailing.
+		$VarMailProximity = 60;					// When Toon is this near in yards, it will send mail.
+
 
 
 	// ******************************************************************************************** //
@@ -94,5 +99,5 @@
 	// ******************************************************************************************** //
 	// 		Misc Configuration   																	//
 	// ******************************************************************************************** //
-		$VarUseMount = False; 					// Use mount for long distance? True/False.
+		$VarUseMount = True; 					// Use mount for long distance? True/False.
 		$VarDangerDistance = 25;				// Danger distance
