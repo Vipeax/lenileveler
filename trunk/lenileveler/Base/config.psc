@@ -10,7 +10,7 @@
 	// 		Leveling Configuration   																//
 	// ******************************************************************************************** //
 		$VarLevelingFromRace = True;			// Use default template race leveling? True/False.
-		$VarLevelingForcedRace = "";			// Use this forced template leveling:
+		$VarLevelingForcedRace = "Normal";		// Use this forced template leveling:
 												// 		Alliance: 	Human/Dwarf/Gnome/NightElf/Dranei
 												// 		Horde: 		Undead/Tauren/Orc/Troll/BloodElf
 												// 		WARNING: Using this stuff can cause some bug with class trainer
@@ -53,8 +53,8 @@
 	// ******************************************************************************************** //
 	// 		Mailing Configuration   																//
 	// ******************************************************************************************** //
-		$VarMail = False;						// Enable mail sending.
-		$VarMailTo = "Test"; 					// Replace 'Test' with the name of the character which will receive the items.
+		$VarMail = False;						// Enable mail sending
+		$VarMailTo = "YourToons";				// The name of the person who items will be mailed to.
 		$VarMailItems = []; 					// Items to be mailed to the character above. Seperated by a comma.
 		$VarMailProtected = []; 				// Items that will not be mailed. Seperated by a comma.
 		$VarMailGreens = True; 					// Mail items of Uncommon quality (Green name) True/False

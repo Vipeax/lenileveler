@@ -35,7 +35,7 @@ Par
 	}
 	If
 	{
-		$cond = $VarBuyItems != False;
+		$cond = $VarBuyItems != False && $VarBuyRestNPC != "xxx";
 		Buy
 		{    
 			$NPC = $VarBuyRestNPC; 
@@ -48,7 +48,7 @@ Par
 	}
 	If
 	{
-		$cond = $VarBuyAmmo;
+		$cond = $VarBuyAmmo && $VarBuyAmmoNPC != "xxx";
 		Buy
 		{
 			$NPC = $VarBuyAmmoNPC;

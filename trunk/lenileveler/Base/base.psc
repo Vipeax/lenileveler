@@ -30,23 +30,28 @@ Par
 	}
 
 	// Load harving handler
-	#include </base/harving.psc>
+	//#include </base/harving.psc>
 
 	// Load class handler
-	#include </classes/base.psc>
-
+	//#include </classes/base.psc>
 
 	// Alliance loading
 	If
 	{
 		$cond = $MyFaction == "Alliance";
-		#include </base/alliance.psc>
+		Par
+		{
+			#include </base/alliance.psc>
+		}
 	}
 
 	// Horde loading
 	If
 	{
 		$cond = $MyFaction == "Horde";
-		#include </base/horde.psc>
+		Par
+		{
+			#include </base/horde.psc>
+		}
 	}
 }
