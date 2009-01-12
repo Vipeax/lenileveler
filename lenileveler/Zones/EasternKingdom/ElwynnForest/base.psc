@@ -7,16 +7,17 @@
 
 If 
 {
-	$cond = $MyLevel <= 6
+	$cond = $MyLevel <= 6;
 	Par 
 	{
-		#include </zones/estern kingdom/elwynn forest/northshire/vendor.psc>
-		#include </zones/estern kingdom/elwynn forest/northshire/buy.psc>
-		//#include </zones/estern kingdom/elwynn forest/northshire/mail.psc>
+		#include </zones/esternkingdom/elwynnforest/northshire/vendor.psc>
+		#include </zones/esternkingdom/elwynnforest/northshire/buy.psc>
+		//#include </zones/esternkingdom/elwynnforest/northshire/mail.psc>
+		#include </zones/esternkingdom/elwynnforest/northshire/quests.psc>
 		When
 		{
 			$cond = $AlreadyTrained == 0 && $MyLevel % 2 == 0;
-			#include </zones/estern kingdom/elwynn forest/northshire/train.psc>
+			#include </zones/esternkingdom/elwynnforest/northshire/train.psc>
 		}
 	}
 }

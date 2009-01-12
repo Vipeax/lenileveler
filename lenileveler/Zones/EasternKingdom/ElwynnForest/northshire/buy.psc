@@ -10,14 +10,14 @@
 	// ******************************************************************************************** //
 	// 		Buy Configuration   																	//
 	// ******************************************************************************************** //
-		$VarBuyRestNPC = ""; 
-		$VarBuyRestLocation = [,,,];
-		$VarBuyWaterItem = "";
-		$VarBuyFoodItem = "";
+		$VarBuyRestNPC = "xxx"; 
+		$VarBuyRestLocation = [-8904.1, -113.4, 81.9];
+		$VarBuyWaterItem = "xxx";
+		$VarBuyFoodItem = "xxx";
 
-		$VarBuyAmmoNPC = "";
-		$VarBuyAmmoLocation = [,,,];
-		$VarBuyAmmoItem = "";
+		$VarBuyAmmoNPC = "xxx";
+		$VarBuyAmmoLocation = [,,];
+		$VarBuyAmmoItem = "xxx";
 
 
 #include </include/buy.psc>

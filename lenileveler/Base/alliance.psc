@@ -22,7 +22,7 @@ Par
 			{
 				$Text = "Loading human template";	
 			}
-			#include </zones/estern kingdom/elwynn forest/base.psc>
+			#include </zones/esternkingdom/elwynnforest/base.psc>
 		}
 	}
 }

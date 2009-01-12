@@ -7,7 +7,7 @@
 
 If
 {
-	$cond = $VarMail && $VarMailTo != ''
+	$cond = $VarMail && $VarMailTo != '';
 	Mail
 	{
 		$Prio = 3;
