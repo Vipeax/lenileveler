@@ -9,6 +9,8 @@ using System.Windows.Forms;
 using LenHandler.objects;
 using LenHandler.views;
 using LenHandler.forms;
+using System.IO;
+using System.Threading;
 
 namespace LenHandler
 {
@@ -17,6 +19,7 @@ namespace LenHandler
         #region Variables de classe
 
         private static ListView _log = new ListView();
+        private List<Thread> _openThread;
 
         #endregion
 
@@ -25,6 +28,7 @@ namespace LenHandler
         public LenController()
         {
             InitializeComponent();
+            _openThread = new List<Thread>();
         }
 
         #endregion
@@ -36,9 +40,18 @@ namespace LenHandler
         {
             bool _status = false;
             connect_btn.Enabled = false;
-            if (connections_tc.Controls.Count > 0)
+            GliderConnection _conn = getSelectedConnection();
+            if (_conn != null)
             {
-                _status = ((objects.TabPage)connections_tc.SelectedTab).Connection.Status;
+                _status = _conn.Status;
+                if (!_conn.Connecting)
+                {
+                    connect_btn.Image = null;
+                }
+                else
+                {
+                    connect_btn.Image = LenHandler.Properties.Resources.loader;
+                }
                 connect_btn.Enabled = !_status;
             }
             disconnect_btn.Enabled = _status;
@@ -51,9 +64,9 @@ namespace LenHandler
             _log.Items.Add(msg);
         }
 
-        private Connection getSelectedConnection()
+        private GliderConnection getSelectedConnection()
         {
-            Connection _conn = null;
+            GliderConnection _conn = null;
             if (connections_tc.Controls.Count > 0)
             {
                 _conn = ((objects.TabPage)connections_tc.SelectedTab).Connection;
@@ -69,12 +82,19 @@ namespace LenHandler
 
         private void connect_btn_Click(object sender, EventArgs e)
         {
-            Connection _conn = getSelectedConnection();
-            if (_conn != null && !_conn.Status)
+            GliderConnection _conn = getSelectedConnection();
+            if (!_conn.Connecting)
             {
-                _conn.Connect();
+                connect_btn.Image = LenHandler.Properties.Resources.loader;
+                Thread thread = new Thread(new ThreadStart(_conn.Connect));
+                thread.IsBackground = false;
+                thread.Start();
+                _openThread.Add(thread);
+                System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer();
+                timer.Interval = 500;
+                timer.Tick += new System.EventHandler(this.connectTimer_Tick);
+                timer.Enabled = true;
             }
-            CheckButton();
         }
 
         private void LenHandler_FormClosing(object sender, FormClosingEventArgs e)
@@ -83,10 +103,17 @@ namespace LenHandler
             {
                 ((objects.TabPage)connections_tc.Controls[i]).Close();
             }
+            for (int i = 0; i < _openThread.Count; i++)
+            {
+                if (_openThread[i].ThreadState == ThreadState.Running)
+                {
+                    _openThread[i].Abort();
+                }
+            }
         }
         private void disconnect_btn_Click(object sender, EventArgs e)
         {
-            Connection _conn = getSelectedConnection();
+            GliderConnection _conn = getSelectedConnection();
             if (_conn != null && _conn.Status)
             {
                 _conn.Disconnect();
@@ -96,7 +123,7 @@ namespace LenHandler
 
         private void log_btn_Click(object sender, EventArgs e)
         {
-            Connection _conn = getSelectedConnection();
+            GliderConnection _conn = getSelectedConnection();
             if (_conn != null)
             {
                 new LogForm(_conn.Log).ShowDialog();
@@ -105,20 +132,29 @@ namespace LenHandler
 
         private void cmd_btn_Click(object sender, EventArgs e)
         {
-            Connection _conn = getSelectedConnection();
+            GliderConnection _conn = getSelectedConnection();
             if (_conn != null)
             {
                 new CommandForm(_conn).ShowDialog();
             }
         }
 
+        private void view_btn_Click(object sender, EventArgs e)
+        {
+            GliderConnection _conn = getSelectedConnection();
+            if (_conn != null)
+            {
+                new ViewForm(_conn).ShowDialog();
+            }
+        }
+
         private void créerToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Connection _conn;
+            GliderConnection _conn;
             new CreateForm(out _conn).ShowDialog();
             if (_conn.Created)
             {
-                _conn.MessageReceived += new Connection.Event_MessageReceived(Log);
+                _conn.MessageReceived += new GliderConnection.Event_MessageReceived(Log);
                 connections_tc.Controls.Add(new objects.TabPage(_conn));
             }
             CheckButton();
@@ -136,6 +172,24 @@ namespace LenHandler
         private void quitterToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void connectTimer_Tick(object sender, EventArgs e)
+        {
+
+            GliderConnection _conn = getSelectedConnection();
+            if (_conn != null && !_conn.Connecting)
+            {
+                System.Windows.Forms.Timer timer = ((System.Windows.Forms.Timer)sender);
+                timer.Enabled = false;
+                timer.Dispose();
+            }
+            CheckButton();
+        }
+
+        private void connections_tc_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            CheckButton();
         }
 
         #endregion

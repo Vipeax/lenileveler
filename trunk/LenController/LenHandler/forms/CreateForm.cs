@@ -15,17 +15,17 @@ namespace LenHandler.views
 
         #region Variables de classe
 
-        Connection _connection;
+        GliderConnection _connection;
 
         #endregion
 
 
         #region Constructeurs
 
-        public CreateForm(out Connection connection)
+        public CreateForm(out GliderConnection connection)
         {
             InitializeComponent();
-            connection = new Connection();
+            connection = new GliderConnection();
             _connection = connection;
             name_txt.Focus();
         }

@@ -79,6 +79,8 @@ namespace LenHandler.forms
             this.level_val = new System.Windows.Forms.Label();
             this.level_lbl = new System.Windows.Forms.Label();
             this.name_val = new System.Windows.Forms.Label();
+            this.session_lbl = new System.Windows.Forms.Label();
+            this.session_val = new System.Windows.Forms.Label();
             this.chat_tp = new System.Windows.Forms.TabPage();
             this.chat_typnl = new System.Windows.Forms.TableLayoutPanel();
             this.currentchat_typnl = new System.Windows.Forms.TableLayoutPanel();
@@ -88,8 +90,6 @@ namespace LenHandler.forms
             this.log_tp = new System.Windows.Forms.TabPage();
             this.log_lst = new System.Windows.Forms.ListBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.session_lbl = new System.Windows.Forms.Label();
-            this.session_val = new System.Windows.Forms.Label();
             this.connections_tc.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.connection_tc.SuspendLayout();
@@ -703,6 +703,25 @@ namespace LenHandler.forms
             this.name_val.TabIndex = 3;
             this.name_val.Text = "aucun";
             // 
+            // session_lbl
+            // 
+            this.session_lbl.AutoSize = true;
+            this.session_lbl.Dock = System.Windows.Forms.DockStyle.Right;
+            this.session_lbl.Location = new System.Drawing.Point(700, 0);
+            this.session_lbl.Name = "session_lbl";
+            this.session_lbl.Size = new System.Drawing.Size(50, 23);
+            this.session_lbl.TabIndex = 19;
+            this.session_lbl.Text = "Session :";
+            // 
+            // session_val
+            // 
+            this.session_val.AutoSize = true;
+            this.session_val.Location = new System.Drawing.Point(756, 0);
+            this.session_val.Name = "session_val";
+            this.session_val.Size = new System.Drawing.Size(75, 13);
+            this.session_val.TabIndex = 20;
+            this.session_val.Text = "Non connecté";
+            // 
             // chat_tp
             // 
             this.chat_tp.Controls.Add(this.chat_typnl);
@@ -790,25 +809,6 @@ namespace LenHandler.forms
             this.log_lst.Name = "log_lst";
             this.log_lst.Size = new System.Drawing.Size(933, 511);
             this.log_lst.TabIndex = 0;
-            // 
-            // session_lbl
-            // 
-            this.session_lbl.AutoSize = true;
-            this.session_lbl.Dock = System.Windows.Forms.DockStyle.Right;
-            this.session_lbl.Location = new System.Drawing.Point(700, 0);
-            this.session_lbl.Name = "session_lbl";
-            this.session_lbl.Size = new System.Drawing.Size(50, 23);
-            this.session_lbl.TabIndex = 19;
-            this.session_lbl.Text = "Session :";
-            // 
-            // session_val
-            // 
-            this.session_val.AutoSize = true;
-            this.session_val.Location = new System.Drawing.Point(756, 0);
-            this.session_val.Name = "session_val";
-            this.session_val.Size = new System.Drawing.Size(75, 13);
-            this.session_val.TabIndex = 20;
-            this.session_val.Text = "Non connecté";
             // 
             // Temp
             // 

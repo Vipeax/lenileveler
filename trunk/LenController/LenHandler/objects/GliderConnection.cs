@@ -6,13 +6,14 @@ using System.Net.Sockets;
 using System.IO;
 using System.Threading;
 using System.Drawing;
+using System.Windows.Forms;
 
 namespace LenHandler.objects
 {
     
 
 
-    public class Connection
+    public class GliderConnection
     {
 
         #region Variables de classe
@@ -21,7 +22,8 @@ namespace LenHandler.objects
         private IPEndPoint _IPEndPoint;
         private string _password;
         private static TcpClient _socket;
-        private List<string> _log;
+        private GliderParser _parser;
+        private bool _connecting = false;
         
 		private static NetworkStream _nStream; 
 		private static StreamReader _rStream; 
@@ -37,22 +39,22 @@ namespace LenHandler.objects
 
         #region Constructeurs
 
-        public Connection()
+        public GliderConnection()
         {
             _name = "";
             _IPEndPoint = new IPEndPoint(IPAddress.Parse("0.0.0.0"), 0);
             _password = "";
             _socket = new TcpClient();
-            _log = new List<string>();
+            _parser = new GliderParser();
         }
 
-        public Connection(string name, IPAddress ip, int port, string password)
+        public GliderConnection(string name, IPAddress ip, int port, string password)
         {
             _name = name;
             _IPEndPoint = new IPEndPoint(ip, port);
             _password = password;
             _socket = new TcpClient();
-            _log = new List<string>();
+            _parser = new GliderParser();
         }
 
         #endregion
@@ -97,7 +99,14 @@ namespace LenHandler.objects
         {
             get
             {
-                return _socket.Connected;
+                try
+                {
+                    return _socket.Connected;
+                }
+                catch (Exception)
+                {
+                    return false;
+                }
             }
         }
 
@@ -111,7 +120,22 @@ namespace LenHandler.objects
 
         public List<string> Log
         {
-            get { return _log; }
+            get { return _parser.Log; }
+        }
+
+        public bool Connecting
+        {
+            get { return _connecting; }
+        }
+
+        public Image LastImage
+        {
+            get { return _parser.GetLastImage(true); }
+        }
+
+        public GliderParser Parser
+        {
+            get { return _parser; }
         }
 
         #endregion
@@ -121,11 +145,12 @@ namespace LenHandler.objects
 
         public void Connect()
         {
+            _connecting = true;
             try
             {
                 _socket = new TcpClient();
                 _socket.Connect(_IPEndPoint);
-                _log.Add(DateTime.Now.ToString() + ": Connected to " + _IPEndPoint.ToString());
+                _parser.Add("[Connexion] Connected to " + _IPEndPoint.ToString());
                 _nStream = _socket.GetStream();
 			    _wStream = new StreamWriter(_nStream);
 			    _rStream = new StreamReader(_nStream);
@@ -146,21 +171,47 @@ namespace LenHandler.objects
             catch (Exception)
             {
             }
-
+            try
+            {
+                if (!_socket.Connected)
+                {
+                    if (MessageBox.Show("Impossible de se connecter au serveur: " + _IPEndPoint.ToString(), "Erreur de connection", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error) == DialogResult.Retry)
+                    {
+                        Connect();
+                    }
+                    else
+                    {
+                        _parser.Add("[Connexion] Connexion timeout: " + _IPEndPoint.ToString());
+                    }
+                }
+            }
+            catch (Exception)
+            {
+            }
+            _connecting = false;
         }
 
         public void Disconnect()
         {
             try
             {
-                _log.Add(DateTime.Now.ToString() + ": Disconnected from " + _IPEndPoint.ToString());
+                _parser.Add("[Connexion] Disconnected from " + _IPEndPoint.ToString());
                 _socket.Close();
                 _nStream.Close();
                 _rStream.Close();
                 _wStream.Close();
+                _thread.Interrupt();
             }
             catch (Exception)
             {
+            }
+        }
+
+        public void AbordConnecting()
+        {
+            if (_connecting && !_socket.Connected)
+            {
+                _socket.Close();
             }
         }
 
@@ -176,7 +227,7 @@ namespace LenHandler.objects
 				try
 				{
                     string msg = _rStream.ReadLine();
-                    _log.Add(DateTime.Now.ToString() + ": " + msg);
+                    _parser.Add(msg);
                     MessageReceived(msg);
 				}
 				catch(Exception)

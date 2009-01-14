@@ -62,13 +62,18 @@
     <Compile Include="forms\ViewForm.Designer.cs">
       <DependentUpon>ViewForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="LenHandler.cs">
+    <Compile Include="LenController.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="LenHandler.Designer.cs">
-      <DependentUpon>LenHandler.cs</DependentUpon>
+    <Compile Include="LenController.Designer.cs">
+      <DependentUpon>LenController.cs</DependentUpon>
     </Compile>
-    <Compile Include="objects\Connection.cs" />
+    <Compile Include="objects\GliderConnection.cs" />
+    <Compile Include="objects\GliderImage.cs" />
+    <Compile Include="objects\GliderLoot.cs" />
+    <Compile Include="objects\GliderLoots.cs" />
+    <Compile Include="objects\GliderParser.cs" />
+    <Compile Include="objects\GliderStatus.cs" />
     <Compile Include="objects\TabPage.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -90,9 +95,9 @@
       <SubType>Designer</SubType>
       <DependentUpon>ViewForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="LenHandler.resx">
+    <EmbeddedResource Include="LenController.resx">
       <SubType>Designer</SubType>
-      <DependentUpon>LenHandler.cs</DependentUpon>
+      <DependentUpon>LenController.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -106,6 +111,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -124,11 +130,11 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="connected.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <EmbeddedResource Include="images\loader.gif">
+    </EmbeddedResource>
+    <Content Include="images\connected.png">
     </Content>
-    <Content Include="disconnected.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <Content Include="images\disconnected.png">
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
