@@ -13,14 +13,14 @@ namespace LenHandler.forms
     {
         #region Variable de classe
 
-        private Connection _connection;
+        private GliderConnection _connection;
 
         #endregion
 
 
         #region Constructeurs
 
-        public CommandForm(Connection connection)
+        public CommandForm(GliderConnection connection)
         {
             InitializeComponent();
             _connection = connection;

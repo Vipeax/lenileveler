@@ -75,7 +75,7 @@ namespace LenHandler.objects
 
         #region Variables de classes
 
-        private Connection _connection;
+        private GliderConnection _connection;
         private Timer _logTimer;
         private Timer _updateTimer;
         private List<string> _updatedDatas;
@@ -85,7 +85,7 @@ namespace LenHandler.objects
 
         #region Constructeurs
 
-        public TabPage(Connection connection) : base()
+        public TabPage(GliderConnection connection) : base()
         {
             InitializeComponent();
             _connection = connection;
@@ -875,14 +875,11 @@ namespace LenHandler.objects
 
         public void Close()
         {
-            if (_connection.Status)
-            {
-                _connection.Disconnect();
-            }
+            _connection.Dispose();
             Parent.Dispose();
         }
 
-        public Connection Connection
+        public GliderConnection Connection
         {
             get { return _connection; }
         }

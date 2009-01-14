@@ -76,6 +76,7 @@ namespace LenHandler
             this.connections_tc.SelectedIndex = 0;
             this.connections_tc.Size = new System.Drawing.Size(527, 331);
             this.connections_tc.TabIndex = 0;
+            this.connections_tc.SelectedIndexChanged += new System.EventHandler(this.connections_tc_SelectedIndexChanged);
             // 
             // cmd_btn
             // 
@@ -97,6 +98,7 @@ namespace LenHandler
             this.view_btn.TabIndex = 5;
             this.view_btn.Text = "Visionner";
             this.view_btn.UseVisualStyleBackColor = true;
+            this.view_btn.Click += new System.EventHandler(this.view_btn_Click);
             // 
             // disconnect_btn
             // 
